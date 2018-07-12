@@ -1,0 +1,17 @@
+
+
+<IfModule mod_rewrite.c>
+    RewriteBase /
+    RewriteEngine On
+    RedirectMatch 404 /.(svn|git|hg|bzr|cvs)|dump.sql(/|$)
+    RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK)
+    RewriteRule ^$ index.php [L]
+    RewriteCond %{REQUEST_URI} (dfiles/.*)
+    RewriteRule ^(.*)$ /dfiles.php?request=$1 [L]
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^(.+)$ $1 [L]
+    RewriteCond %{REQUEST_URI} !(jscss/.*)!(img/.*)!(image.php.*)!(video.php.*)
+    RewriteRule ^(.*)$ /index.php?rad_pr=1&request=$1
+    RewriteCond %{SERVER_PORT} !^443$
+    RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
+</IfModule>

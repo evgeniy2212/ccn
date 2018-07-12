@@ -1,0 +1,20 @@
+{
+    "name": "vlad/viking.local",
+    "authors": [
+        {
+            "name": "Vlad Ischenko",
+            "email": "vis@kb-karat.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Controllers\\": "controllers",
+            "Core\\": "core",
+            "Models\\": "models",
+            "Graph\\": "views/templates",
+            "Handler\\": "requestHandler",
+            "Notifications\\": "smsGateway"
+        }
+    }
+}
